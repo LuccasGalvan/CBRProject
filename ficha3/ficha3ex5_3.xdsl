@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network3" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Exercício">
+			<state id="S" />
+			<state id="N" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Dieta_Saudável">
+			<state id="S" />
+			<state id="N" />
+			<probabilities>0.25 0.75</probabilities>
+		</cpt>
+		<cpt id="Doença_Cardíaca">
+			<state id="S" />
+			<state id="N" />
+			<parents>Exercício Dieta_Saudável</parents>
+			<probabilities>0.25 0.75 0.45 0.55 0.55 0.45 0.75 0.25</probabilities>
+		</cpt>
+		<cpt id="Azia">
+			<state id="S" />
+			<state id="N" />
+			<parents>Dieta_Saudável</parents>
+			<probabilities>0.2 0.8 0.85 0.15</probabilities>
+		</cpt>
+		<cpt id="Dor_no_peito">
+			<state id="S" />
+			<state id="N" />
+			<parents>Doença_Cardíaca Azia</parents>
+			<probabilities>0.8 0.2 0.6 0.4 0.4 0.6 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Tensão_alta">
+			<state id="S" />
+			<state id="N" />
+			<parents>Doença_Cardíaca</parents>
+			<probabilities>0.85 0.15 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3724.0 ACADEMIC" name="Network3">
+			<node id="Exercício">
+				<name>Exercício</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>194 89 253 125</position>
+			</node>
+			<node id="Dieta_Saudável">
+				<name>Dieta Saudável</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>441 80 525 132</position>
+			</node>
+			<node id="Doença_Cardíaca">
+				<name>Doença Cardíaca</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>205 218 298 276</position>
+			</node>
+			<node id="Azia">
+				<name>Azia</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>472 224 514 250</position>
+			</node>
+			<node id="Dor_no_peito">
+				<name>Dor no peito</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>482 376 553 420</position>
+			</node>
+			<node id="Tensão_alta">
+				<name>Tensão alta</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>223 379 292 422</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network4" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Motor">
+			<state id="OK" />
+			<state id="Avariado" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Controlo">
+			<state id="OK" />
+			<state id="Avariado" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Sensores">
+			<state id="OK" />
+			<state id="Avariado" />
+			<probabilities>0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Cheiro_de_queimado">
+			<state id="Presente" />
+			<state id="NP" />
+			<parents>Motor Controlo</parents>
+			<probabilities>0.05 0.95 0.3 0.7 0.7 0.3 0.95 0.05000000000000004</probabilities>
+		</cpt>
+		<cpt id="Paragem_no_piso_errado">
+			<state id="S" />
+			<state id="N" />
+			<parents>Sensores Controlo</parents>
+			<probabilities>0.05 0.95 0.7 0.3 0.6 0.4 0.95 0.05000000000000004</probabilities>
+		</cpt>
+		<cpt id="Desnível_à_chegada">
+			<state id="S" />
+			<state id="N" />
+			<parents>Sensores Controlo</parents>
+			<probabilities>0.05 0.95 0.3 0.7 0.8 0.2 0.95 0.05000000000000004</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.1.3724.0 ACADEMIC" name="Network4">
+			<node id="Motor">
+				<name>Motor</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>131 93 176 121</position>
+			</node>
+			<node id="Controlo">
+				<name>Controlo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>340 93 396 128</position>
+			</node>
+			<node id="Sensores">
+				<name>Sensores</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>502 96 563 134</position>
+			</node>
+			<node id="Cheiro_de_queimado">
+				<name>Cheiro de queimado</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>97 313 201 378</position>
+			</node>
+			<node id="Paragem_no_piso_errado">
+				<name>Paragem no piso errado</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>340 334 422 385</position>
+			</node>
+			<node id="Desnível_à_chegada">
+				<name>Desnível à chegada</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>501 332 605 397</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

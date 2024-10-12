@@ -1,0 +1,283 @@
+===========================
+CR T - Aula 1 15/2/24
+
+Sistemas Periciais - Famosamente utilizados na decada de 80
+
+Conhecimento extraído de um especialista de uma determinada area.
+O Conhecimento era então traduzido em regras lógicas (se, então . . . )
+
+Entrou em desuso pela quantidade significativa de esforço necessário para ser construido.
+
+>Base de Conhecimento
+    - Regras lógicas
+    - Redes semânticas
+    - Frames
+    - Usada pelo motor de inferência
+>Memória de trabalho
+    - Fatos conhecidos sobre o problema a ser resolvido
+>Motor de inferência
+    - Infere as conclusões a partir dos fatos (dados entrada) e da base de conhecimento (regras)
+    - Os fatos são comparados com os antecedentes das regras e uma ou mais regras são ativadas, 
+    mostrando as ações dos respetivos consequentes
+
+    - Raciocinio para a frente
+        * resolve o problema dos fatos para inferir a conclusão.
+        * a conclusao pode passar a ser um novo fato da memoria de trabalho, voltando a 
+        desencadear novas regras.
+        *Ex: temos os fatos e depois analisamos as regras para chegar na conclusão.
+
+    - Raciocinio para trás
+        * resolve o problema a partir de uma conclusão já conhecida.
+        * procura na memória de trabalho fatos que expliquem a conclusão.
+        * Ex: temos as conclusões e analisamos quais fatos levam a ela para chegar em uma resposta.
+
+    - Raciocinio misto (ambos acima)
+
+    Vantagens:
+    >Capacidade de armazenamento permanente do conhecimento.
+    >Respostas consistentes.
+    >Possibilidade de combinação do conhecimento de mais de um especialista.
+    >Economicamente vantajoso.
+    >Utilização fácil e intuitiva.
+
+    Desvantagens:
+    >Aquisição do conhecimento do especialista é uma tarefa laborosa.
+    >Erros no sistema de regras podem ter resultados catastróficos.
+    >Fase de treino e teste até a utilização é demorada.
+    >Sistemas pouco criativos, sem capacidade de aprendizagem.
+    >Em muitos domínios, o sistema precisa de milhares de regras.
+
+
+Raciocinio baseado em casos:
+
+>Muito utilizado na implementação de diversos sistemas baseados em conhecimento.
+>Baseia-se na representação de casos que representam recordações (exp passadas).
+>Cada caso é composto por uma descrição e pela respetiva solução.
+>A resolução de um novo problema consiste em encontrar um caso passado semelhante ao atual.
+
+>Princípio basico: usar a experiência passada para resolver novos casos.
+
+Ciclo de um sistema CBR:
+
+Problema -> novo caso --(REtrieve - find)-> Retrieved cases --(REuse)-> Reused cases --(REvise)--
+-> Repaired/tested case --(REtain - save)-> Learned case -> Case Base/Library
+
+Exemplo:
+
+-Diagnóstico de falha:
+    - Perito observa os _sintomas_ da avaria
+        - Motor não arranca
+    - Perito mede valores
+        - Voltagem da bateria = 6.3V
+
+- Objetivo;
+    - Determinar a causa da avaria
+        - Bateria descarregada
+    - Propor uma solução
+        - Trocar bateria
+
+- Um caso é composto por:
+    - Sintomas da avaria
+    - Avaria detetada
+    - Reparação adequada
+
+- Casos são armazenados na case library
+
+Fase de retrieve:
+    - Consiste em escolher o caso mais similar ao caso atual, na case library.
+    - Adaptar o caso escolhido para resolver o novo problema.
+    - Necessário calcular uma métrica de similaridade (local) entre os casos conhecidos e o novo caso.
+        - Similaridade Global:
+            - Calculada a partir de valores de semelhança entre os atributos
+            - Cada atributo pode ter uma importância diferente.
+    - Define-se os atributos mais e menos importantes e também o seu peso.
+    - Dá-se um valor para cada um dos atributos no quesito similaridade entre os casos
+    - Multiplica-se o peso pela similaridade entre os atributos e se divide pelo peso total,
+    resultando no fator de similaridade global entre os casos.
+
+    in depth:
+    - Valor de similaridade é expresso por um número real entre 0 e 1.
+    - Pode ser calculada usando a distância linear ou euclidiana entre atributos
+    - Atributos podem ter tipos de dados diferentes
+        - numéricos
+        - simbólicos
+        - datas
+        - coordenadas geograficas
+        - booleanos
+    - Atributos não numéricos:
+        - Necessário um trabalho prévio p construção de uma tabela de similaridade com seus valores.
+
+Fase de reuse:
+    - Adaptação do novo caso usando o caso escolhido
+
+Fase de revise:
+    - Avaliação da solução proposta
+
+Fase de retain:
+    - Que conhecimento reter, quando reter e como reter
+    - O caso atual deve ser um novo caso?
+    - Deverão ser feitas atualizações na case library?
+
+Fazer exercício dos slides
+===========================
+CR T - Aula 2 22/2/24
+
+Raciocinio baseado em casos
+
+>Baseia-se na representação de casos que representam experiências passadas
+
+>Cada caso é composto por uma descrição e pela respetiva solução
+
+>A resolução de um novo problema consiste em encontrar um caso
+passado semelhante ao atual e apresentar a sua solução direta ou
+adaptada ao novo contexto
+
+>Após a resolução do novo problema, podemos escolher se o mesmo irá
+se tornar um novo caso na memória de casos.
+
+Vantagens:
+    - Baseia-se em experiências passadas
+    - A aprendizagem é simples
+    - Sua implementação evita a fase de extração de conhecimento
+
+Desvantagens:
+    - Dificuldade na adaptação de casos
+
+Indicados para:
+    - Domínios dinâmicos
+    - Necessidade de aprendizagem constante e automática
+    - Domínios complexos
+    - Domínios que dependam de experiências passadas
+===========================
+CR T - Aula 3 29/2/24
+
+Raciocinio difuso - Fuzzy logic
+
+>Permite lidar com conhecimento impreciso / ambíguo
+>Modela num sistema uma forma de raciocínio aproximada à do ser humano
+>Utiliza sistemas de regras baseadas em palavras, não em números exatos
+
+>numeros crespos (crispy)
+    - são usados na lógica tradicional
+    - crisp = valores precisos
+    - valores tomam valores de verdadeiro ou falso (1/0)
+
+>numeros difusos (fuzzy)
+    - usados em lógica difusa
+    - podem ter valores que variam em [0,1]
+    - assumem valores parcialmente verdadeiros ou falsos
+
+>Podemos dizer que a logica difusa consiste numa extensão da lógica booleana
+    -   Grau de verdade é definido por uma função de pertença: valores reais contidos em [0,1]
+
+Exemplo:
+
+>booleano:
+    velocidade: alta? ~> crisp numbers: sim(1) ou não(0).
+
+>fuuzy logic:
+    velocidade: alta? ~> fuzzy numbers: Muito alta(1), alta(0.66), baixa(0.33), muito baixa(0).
+
+>Variaveis linguisticas possuem valores que não são numeros, mas sim palavras.
+    - Ex: Jovem(0 - 20 anos), Adulto(25 - 60 anos), Idoso(65+ anos)
+
+>Fuzzy interface system (FIS)
+    - Framework computacional que usa a lógica difusa para resolver problemas
+    - Sistema inteligente capaz de lidar com incerteza e interpretar regras usando palavras
+    >Componentes:
+        - Fuzzyficação: Definição das variáveis fuzzy de entrada e saída
+        - Regras: Obter conhecimento do perito e traduzir em regras
+        - Inferência: Obter valores de entrada e aplicar sistema de regras fuzzy
+        - Desfuzzyficação: Obter valor de saída
+===========================
+CR T - Aula 4 07/3/24
+
+Análise e tratamento de dados Datasets
+
+Inteligência artificial e aprendizagem
+
+>supervisionada
+    - sistemas de regressão, redes neuronais
+    - classigicação (redes neuronais)
+    - regressão
+    - metodologia:
+        - recolher dados do dataset => tratamento de dados => treinar o modelo => avaliar o modelo
+    
+    - tratamento de dados:
+        - Algoritmos precisam de dados numéricos e alguns requisitos que precisam ser validados no dataset
+        - Como transformar dados não tratados (imagens, videos, texto) em atributos (dados numéricos em tabelas) que possam ser usados em algoritmos de ML?
+            - o que é um dataset?
+                - uma tabela
+                - colunas são os atributos de um determinado problema
+                    - em problemas de classificação há uma coluna referente ao objetivo (target)
+                - linhas são os exemplos disponíveis para treinar e validar o modelo de machine learning
+            - o que é um atributo (feature)?
+                - bons atributos:
+                    - Informativos - descrevem algo que faça sentido para o ser humano
+                    - Disponivel - estão presentes em vários exemplos diferentes
+                    - Discriminantes - permitem distinguir várias classes
+                    - Independentes - não há relações entre atributos
+                    - Simples
+            - tarefas de tratamento de dados:
+                - limpeza
+                    - remover dados:
+                        - inconsistentes
+                        - irrelevantes
+                        - redundantes - atributos (colunas) ou exemplos (linhas)
+                            - Exemplos redundantes: 
+                                - Linhas com dados duplicados
+                            - Atributos redundantes:
+                                - Colunas com poucos valores (baixa variância)
+                                - Colunas com valores unicos
+                                - Colunas que possam ser obtidas de outras (Data de nascimento <=> idade)
+                        - não discriminantes
+                        - duplicados
+                        - com valores em falta 
+                            - eliminar ou preencher (preferencialmente preencher)
+                                - preencher com valor médio (pode não ser uma boa abordagem)
+                                - preencher usando modelos de previsão (CBR, Regressão, Redes neuronais, ...)
+                        - com valores extremos que afetarão a média
+                - transofrmação
+                    - Tipos de dados de um dataset podem ser variados
+                        - Strings
+                        - Enumerações
+                        - Valores reais
+                        - Valores inteiros
+                        - Valores booleanos
+                        - Normalização de valores
+                            - Assegura que as escalas dos diferentes atributos numéricos são as mesmas
+                            - Valores passam a estar entre [0, 1]
+                            - Técnicas
+                                - máximo
+                                    - X'i = Xi / MAX(X)
+                                - minmax
+                                    - X'i = [Xi - min(x)]/max(X) - min(X)
+                        - Padronização de valores (recomendado)
+                            - os valores são centrados em torno da média com um desvio padrã unitário
+                            - a média do atributo torna-se zero e a distribuição resultante tem um desvio padrão unitário
+                                - X'i = Xi - média / desvio padrão
+                        - Dados categóricos
+                            - Categorias ou valores nominais
+                                - Duas ou mais categorias sem ordem
+                                    - booleanos
+                                    - coordenadas
+                                    - tipos de casa (moradia, apartamento, ...)                       
+                - seleção
+                    - Analisar todos os atributos do dataset
+                        - Importância de cada atributo
+                        - Reduzir número de atributos
+                        - Visualização dos dados
+                            - Para cada atributo, fazer uma análise estatística
+                                - média, mediana, desvio padrão
+                            - Usar gráficos que permitam visualizar os dados
+                                - gráficos de dispersão
+                - redução
+
+>não supervisionada
+    - segmentação, agrupamento (clustering)
+>por reforço
+    - robótica, jogos
+
+
+
+===========================
